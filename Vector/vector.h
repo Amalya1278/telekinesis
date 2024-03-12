@@ -2,6 +2,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+
 template<typename T>
 class Vector{
 	public:
@@ -18,9 +19,12 @@ class Vector{
    void reallloc();
 	public:
 	Vector();
-	Vector(size_type);
+	Vector(size_type);//delegated ctor
+	Vector(size_type,const_referance);
 	Vector(const Vector<T>&);
 	 Vector <T>& operator=(const Vector <T>&);
+	 Vector(Vector <T>&&);
+	 const Vector <T>& operator=(Vector <T>&&);
 	~Vector();
 	void push_back(const_referance);
 	void push_front(value_type);
@@ -36,4 +40,3 @@ class Vector{
 };
 #include "vector.cpp"
 #endif
-
