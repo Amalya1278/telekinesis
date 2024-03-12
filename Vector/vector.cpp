@@ -9,11 +9,38 @@ template<typename T>
 	arr=nullptr;
 }
 template<typename T>
- Vector<T>::Vector(size_type n): arr(nullptr),sizet(0){
+ Vector<T>::Vector(size_type n,const_referance val): arr(nullptr),sizet(0){
 
 
 	capacity=n;
-	arr=new T[capacity];
+	arr=new value_type[capacity];
+	for(int i=0;i<sizet;i++){
+		arr[i]=val;
+	}
+}
+template<typename T>
+Vector<T>::Vector(size_type s)
+:Vector(s,value_type()){}
+template<typename T>
+Vector<T>::Vector(Vector<T>&& rhv)
+:sizet{rhv.sizet}
+,capacity{rhv.capacity}
+,arr{rhv.arr}
+{
+	rhv.sizet=0;
+	rhv.capacity=0;
+	rhv.arr=nullptr;
+}
+template<typename T>
+const Vector<T>& Vector<T>::operator=( Vector <T>&& rhv){
+	if(this!=&rhv){
+	this->clear();
+	sizet=rhv.sizet;
+	capacity=rhv.capacity;
+	arr=rhv.arr;
+	rhv.arr=nullptr;
+	}
+	return *this;
 }
 template<typename T>
  Vector<T>::~Vector(){
