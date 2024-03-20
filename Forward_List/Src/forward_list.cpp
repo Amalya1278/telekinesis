@@ -12,6 +12,21 @@ Forward_list<T>::~Forward_list(){
 	clear();
 }
 template <typename T>
+Forward_list<T>& Forward_list<T>::operator=(const Forward_list<T>& rhv)
+{
+	if(this!=&rhv){
+		clear();
+		Node<value_type>* ptr=rhv.head;
+		while(ptr!=nullptr){
+			push_back(ptr->data);
+			ptr=ptr->next;
+		}
+//    	*this=Forward_list(rhv); move assignment
+	}
+	return *this;
+}
+
+template <typename T>
 Forward_list<T>::Forward_list(Forward_list<T>&& rhv)
 :head{rhv.head}
 {
