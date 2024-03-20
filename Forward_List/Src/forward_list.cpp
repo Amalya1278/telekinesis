@@ -18,6 +18,16 @@ Forward_list<T>::Forward_list(Forward_list<T>&& rhv)
 	rhv.head=nullptr;
 }
 template <typename T>
+Forward_list<T>::Forward_list(const Forward_list<T>& rhv)
+:head{nullptr}
+{
+	Node<value_type>* ptr=rhv.head;
+	while(ptr!=nullptr){
+		push_back(ptr->data);
+		ptr=ptr->next;
+	}
+}
+template <typename T>
 Forward_list<T>& Forward_list<T>::operator=(Forward_list<T>&& rhv){
 	if(this!=&rhv){
 		this->clear();
