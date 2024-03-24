@@ -44,6 +44,16 @@ Queue<T,Container>& Queue<T,Container>:: operator=(const Queue& a){
 	arr=a.arr;
 	return *this;
 }
+template<typename T, typename Container>
+const Queue<T,Container>& Queue<T,Container>::operator=(Queue&& rhv){
+       if(this!=&rhv){
+		this->clear();
+		arr=rhv.arr;
+		rhv.arr=nullptr;
+	}
+	return *this; 
+}
+
 
 template<typename T, typename Container>
 void Queue<T,Container>::swap(Queue& el1){
