@@ -19,6 +19,7 @@ class Queue{
 	Queue(const Queue<T>&);
 	Queue(Queue <T>&&);
 	Queue& operator=(const Queue&);
+        const Queue& operator=(Queue<T,Container>&&);
 	~Queue();
 	reference front();
 	void pop();
