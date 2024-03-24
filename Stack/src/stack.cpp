@@ -46,13 +46,12 @@ Stack<T,Container>& Stack<T,Container>:: operator=(const Stack& rhv){
 }
 
 const Stack<T,Container>& Stack<T,Container>::operator=(Stack&& rhv){
-        if (this != &rhv){
-
-            for (const T& val : rhv){
-                ob = std::move(rhv.ob);
-            }
-        }
-    return *this; 
+       if(this!=&rhv){
+		this->clear();
+		arr=rhv.arr;
+		rhv.arr=nullptr;
+	}
+	return *this; 
 }
 
 template<typename T, typename Container>
