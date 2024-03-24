@@ -16,8 +16,8 @@ class Queue{
    using const_pointer = const value_type*;
 	Queue();
 	Queue(std::initializer_list<T>);
-	Queue(const Queue<T>&);
-	Queue(Queue <T>&&);
+	Queue(const Queue<T,Container>&);
+	Queue(Queue <T,Conatiner>&&);
 	Queue& operator=(const Queue&);
         const Queue& operator=(Queue<T,Container>&&);
 	~Queue();
