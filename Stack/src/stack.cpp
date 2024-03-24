@@ -40,9 +40,19 @@ Stack<T,Container>::Stack(const Stack<T>& other)
 : arr(other.arr){}
 
 template<typename T, typename Container>
-Stack<T,Container>& Stack<T,Container>:: operator=(const Stack& a){
-	arr=a.arr;
+Stack<T,Container>& Stack<T,Container>:: operator=(const Stack& rhv){
+	arr=rhv.arr;
 	return *this;
+}
+
+const Stack<T,Container>& Stack<T,Container>::operator=(Stack&& rhv){
+        if (this != &rhv){
+
+            for (const T& val : rhv){
+                ob = std::move(rhv.ob);
+            }
+        }
+    return *this; 
 }
 
 template<typename T, typename Container>
