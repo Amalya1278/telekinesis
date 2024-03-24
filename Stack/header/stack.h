@@ -16,9 +16,10 @@ class Stack{
    using const_pointer = const value_type*;
 	Stack();
 	Stack(std::initializer_list<T>);
-	Stack(const Stack<T>&);
-	Stack(Stack <T>&&);
+	Stack(const Stack<T,Container>&);
+	Stack(Stack <T,Container>&&);
 	Stack& operator=(const Stack&);
+        const Stack& operator=(Stack<T,Container>&&);
 	~Stack();
 	reference top();
 	void pop();
