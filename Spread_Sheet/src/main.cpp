@@ -3,15 +3,15 @@
 
 int main() {
     Sheet sheet(3, 3);
-    sheet.set(0, 0, "A1");
-    sheet.set(0, 1, "B1");
-    sheet.set(0, 2, "C1");
-    sheet.set(1, 0, "A2");
-    sheet.set(1, 1, "B2");
-    sheet.set(1, 2, "C2");
-    sheet.set(2, 0, "A3");
-    sheet.set(2, 1, "B3");
-    sheet.set(2, 2, "C3");
+    sheet.set(0, 0, "a");
+    sheet.set(0, 1, "b");
+    sheet.set(0, 2, "c");
+    sheet.set(1, 0, "d");
+    sheet.set(1, 1, "e");
+    sheet.set(1, 2, "f");
+    sheet.set(2, 0, "g");
+    sheet.set(2, 1, "u");
+    sheet.set(2, 2, "p");
     std::cout << "Sheet without any actions" << std::endl;
     std::cout << sheet << std::endl;
     sheet.add_row(1, "val");
