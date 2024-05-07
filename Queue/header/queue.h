@@ -1,10 +1,10 @@
 #include<iostream>
-#ifndef STACK_H
-#define STACK_H
+#ifndef QUEUE_H
+#define QUEUE_H
 #include<vector>
 #include <initializer_list>
 template<typename T,typename Container=std::vector<T>>
-class Stack{
+class Queue{
 	private:
 	Container arr;
 	public:
@@ -14,26 +14,28 @@ class Stack{
    using const_reference = const value_type&;
    using pointer = value_type*;
    using const_pointer = const value_type*;
-	Stack();
-	Stack(std::initializer_list<T>);
-	Stack(const Stack&);
-	Stack(Stack&&);
-	const Stack& operator=(const Stack&);//
-	const Stack& operator=(Stack&&);//
-	~Stack();
-	reference top();//
-	const_reference top()const;
-	void pop();//
-	void push(const_reference);//
-	size_type size_s();//
-	bool empty_s();//
-	void swap( Stack&);//
+	Queue();
+	Queue(std::initializer_list<T>);
+	Queue(const Queue&);
+	Queue(Queue&&);
+const	Queue& operator=(const Queue&);
+const Queue& operator=(Queue&&);
+	~Queue();
+	reference front();
+	const_reference front() const;
+	reference back();
+	const_reference back() const;
+	void pop();
+	void push(const_reference);
+	size_type size_s();
+	bool empty_s();
+	void swap( Queue&);
 
-bool operator<( const Stack&);//
-bool operator>( const Stack&);//
-bool operator==( const Stack&);//
-bool operator<=( const Stack&);//
-bool operator>=( const Stack&);//
+bool operator<(const Queue& );
+bool operator>(const Queue&);
+bool operator==(const Queue&);
+bool operator<=(const Queue&);
+bool operator>=(const Queue&);
 };
-#include "stack.cpp"
-#endif //STACK_H
+#include "queue.cpp"
+#endif //QUEUE_H
