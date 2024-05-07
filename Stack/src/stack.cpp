@@ -21,7 +21,7 @@ void Stack<T,Container>::pop(){
 }
 
 template<typename T, typename Container>
-void Stack<T,Container>::push(value_type m){
+void Stack<T,Container>::push(const_reference m){
 	arr.push_back(m);
 }
 
@@ -36,22 +36,23 @@ bool Stack<T,Container>::empty_s(){
 }
 
 template<typename T, typename Container>
-Stack<T,Container>::Stack(const Stack<T>& other)
+Stack<T,Container>::Stack(const Stack& other)
 : arr(other.arr){}
 
 template<typename T, typename Container>
-Stack<T,Container>& Stack<T,Container>:: operator=(const Stack& rhv){
-	arr=rhv.arr;
+const Stack<T,Container>& Stack<T,Container>:: operator=(const Stack& a){
+	if(this!=&a){
+	arr=a.arr;
+	}
 	return *this;
 }
-
-const Stack<T,Container>& Stack<T,Container>::operator=(Stack&& rhv){
-       if(this!=&rhv){
-		this->clear();
-		arr=rhv.arr;
-		rhv.arr=nullptr;
+template<typename T, typename Container>
+const Stack<T,Container>& Stack<T,Container>:: operator=( Stack&& a){
+	if(this!=&a){
+	arr=a.arr;
+	a.arr=nullptr;
 	}
-	return *this; 
+	return *this;
 }
 
 template<typename T, typename Container>
@@ -60,35 +61,57 @@ void Stack<T,Container>::swap(Stack& el1){
 }
 
 template<typename T, typename Container>
-Stack<T,Container>::Stack(Stack<T>&& rhv)
-:arr{rhv.arr}{}
+Stack<T,Container>::Stack(Stack&& rhv)
+:arr(std::move(rhv.arr)){}
 
 template<typename T, typename Container>
 Stack<T,Container>::~Stack(){}
 
 template<typename T, typename Container>
 bool operator<( Stack<T, Container>& ob1,  Stack<T, Container>& ob2){
-	return ob1.size_s()<ob2.size_s();
+	if( ob1.size_s()<ob2.size_s()){
+		return true;
+	}
+	return false;
+
 }
 
 template<typename T, typename Container>
 bool operator>( Stack<T, Container>& ob1,  Stack<T, Container>&ob2){
-	return ob1.size_s()>ob2.size_s();
+	if( ob1.size_s()>ob2.size_s()){
+		return true;
+	}
+	return false;
 }
 
 template<typename T, typename Container>
 bool operator==( Stack<T, Container>& ob1,  Stack<T, Container>& ob2){
-	return ob1.size_s()==ob2.size_s();
+	if( ob1.size_s()==ob2.size_s()){
+		return true;
+	}
+	return false;
 }
 
 template<typename T, typename Container>
 bool operator<=( Stack<T, Container>& ob1,  Stack<T, Container>& ob2){
-	return ob1.size_s()<=ob2.size_s();
+	if( ob1.size_s()<ob2.size_s()){
+		return true;
+	}
+	if(ob1.size_s()==ob2.size_s()){
+	return true;
+	}
+	return false;
 }
 
 template<typename T, typename Container>
 bool operator>=( Stack<T, Container>& ob1,  Stack<T, Container>& ob2){
-	return ob1.size_s()>=ob2.size_s();
+	if( ob1.size_s()>ob2.size_s()){
+		return true;
+	}
+	if(ob1.size_s()==ob2.size_s()){
+	return true;
+	}
+	return false;
 }
 
 #endif
