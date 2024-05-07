@@ -9,7 +9,8 @@ int main() {
     std::cout << arr.front() << std::endl;
     std::cout<< arr.size_s() << std::endl;
     arr.pop();
-	std::cout<<arr.front();
+    std::cout<<arr.front();
+    std::cout<<arr.back();
 
     return 0;
 }
