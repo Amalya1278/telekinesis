@@ -14,6 +14,19 @@ template<typename T, typename Container>
  typename Queue<T,Container>::reference Queue<T,Container>::front(){
 	return arr.front();
 }
+template<typename T, typename Container>
+ typename Queue<T,Container>::const_reference Queue<T,Container>::front()const{
+	return arr.front();
+}
+template<typename T, typename Container>
+typename Queue<T, Container>::reference Queue<T, Container>::back() {
+    return arr.back();
+}
+
+template<typename T, typename Container>
+typename Queue<T, Container>::const_reference Queue<T, Container>::back() const {
+    return arr.back();
+}
 
 template<typename T, typename Container>
 void Queue<T,Container>::pop(){
@@ -21,7 +34,7 @@ void Queue<T,Container>::pop(){
 }
 
 template<typename T, typename Container>
-void Queue<T,Container>::push(value_type m){
+void Queue<T,Container>::push(const_reference m){
 	arr.push_back(m);
 }
 
@@ -36,24 +49,24 @@ bool Queue<T,Container>::empty_s(){
 }
 
 template<typename T, typename Container>
-Queue<T,Container>::Queue(const Queue<T>& other)
+Queue<T,Container>::Queue(const Queue& other)
 : arr(other.arr){}
 
 template<typename T, typename Container>
-Queue<T,Container>& Queue<T,Container>:: operator=(const Queue& a){
+const Queue<T,Container>& Queue<T,Container>:: operator=(const Queue& a){
+	if(this!=&a){
 	arr=a.arr;
+	}
 	return *this;
 }
 template<typename T, typename Container>
-const Queue<T,Container>& Queue<T,Container>::operator=(Queue&& rhv){
-       if(this!=&rhv){
-		this->clear();
-		arr=rhv.arr;
-		rhv.arr=nullptr;
+const Queue<T,Container>& Queue<T,Container>:: operator=( Queue&& a){
+	if(this!=&a){
+	arr=a.arr;
+	a.arr=nullptr;
 	}
-	return *this; 
+	return *this;
 }
-
 
 template<typename T, typename Container>
 void Queue<T,Container>::swap(Queue& el1){
@@ -61,7 +74,7 @@ void Queue<T,Container>::swap(Queue& el1){
 }
 
 template<typename T, typename Container>
-Queue<T,Container>::Queue(Queue<T>&& rhv)
+Queue<T,Container>::Queue(Queue&& rhv)
 :arr{rhv.arr}{}
 
 template<typename T, typename Container>
