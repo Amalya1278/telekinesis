@@ -16,28 +16,24 @@ class Stack{
    using const_pointer = const value_type*;
 	Stack();
 	Stack(std::initializer_list<T>);
-	Stack(const Stack<T,Container>&);
-	Stack(Stack <T,Container>&&);
-	Stack& operator=(const Stack&);
-        const Stack& operator=(Stack<T,Container>&&);
+	Stack(const Stack&);
+	Stack(Stack&&);
+	const Stack& operator=(const Stack&);//
+	const Stack& operator=(Stack&&);//
 	~Stack();
-	reference top();
-	void pop();
-	void push(value_type);
-	size_type size_s();
-	bool empty_s();
-	void swap( Stack&);
+	reference top();//
+	const_reference top()const;
+	void pop();//
+	void push(const_reference);//
+	size_type size_s();//
+	bool empty_s();//
+	void swap( Stack&);//
+
+bool operator<( const Stack&);//
+bool operator>( const Stack&);//
+bool operator==( const Stack&);//
+bool operator<=( const Stack&);//
+bool operator>=( const Stack&);//
 };
-template<typename T, typename Container>
-bool operator<( Stack<T, Container>&,  Stack<T, Container>& );
-template<typename T, typename Container>
-bool operator>( Stack<T, Container>&,  Stack<T, Container>&);
-template<typename T, typename Container>
-bool operator==( Stack<T, Container>&,  Stack<T, Container>&);
-template<typename T, typename Container>
-bool operator<=( Stack<T, Container>&,  Stack<T, Container>&);
-template<typename T, typename Container>
-bool operator>=( Stack<T, Container>&,  Stack<T, Container>&);
 #include "stack.cpp"
 #endif //STACK_H
-
