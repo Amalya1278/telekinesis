@@ -15,10 +15,7 @@ int main(){
 	if(arr==arr1){
 		std::cout<<"equal";
 	}
-    std::cout << arr1.top() << std::endl;
-    arr.swap(arr1);
-    std::cout << arr1.top() << std::endl;
-	
+   
 
     return 0;
 }
