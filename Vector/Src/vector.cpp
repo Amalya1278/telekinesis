@@ -78,7 +78,10 @@ void Vector<T>::push_back(const_referance  n){
 }
 template<typename T>
 void Vector<T>::resize(size_type n){
-	if(n>capacity){
+	if(n<sizet){
+		sizet=n;
+	}
+else	if(n>sizet){
 		capacity=n;
 		reallloc();
 	}
@@ -114,16 +117,34 @@ void Vector<T>::pop_back(){
 }
 template<typename T>
 void Vector<T>::pop_front(){
-	arr[0]=0;
-	for(int i=0;i<sizet;i++){
-		int temp=arr[i];
-		arr[i]=arr[i-1];
-		arr[i-1]=temp;
+	for(int i=1;i<sizet;i++){
+		arr[i-1]=arr[i];
 	}
 	sizet-=1;
 }
 template<typename T>
-T& Vector<T>::at(size_type index){
+typename Vector<T>::referance Vector<T>::at(size_type index){
+	if(index>=sizet){
+		std::cout<<"cant return";
+	}
+	else{
+	return arr[index];
+   }
+}
+template<typename T>
+typename Vector<T>::const_referance Vector<T>::at(size_type index) const{
+	if(index>=sizet){
+		std::cout<<"cant return";
+	}else{
+	return arr[index];
+	}
+}
+template<typename T>
+typename Vector<T>::referance Vector<T>::operator[](size_type index){
+	return arr[index];
+}
+template<typename T>
+typename Vector<T>::const_referance Vector<T>::operator[](size_type index)const{
 	return arr[index];
 }
 
@@ -141,6 +162,10 @@ void Vector<T>:: insert(size_type index, value_type n){
 	
 			
 }
+}
+template<typename T>
+typename Vector<T>::size_type Vector<T>::capacity_(){
+	return capacity;
 }
 template<typename T>
 void Vector<T>::reallloc(){
@@ -169,7 +194,60 @@ void Vector<T>::clear(){
 	arr=nullptr;
 	sizet=0;
 }
-
+template<typename T>
+bool Vector<T>::operator==(const Vector& other)const{
+	if (this->sizet!=other.sizet){
+		return false;
+	}
+	for(int i=0;i<sizet;i++){
+		if(arr[i]!=other.arr[i]){
+			return false;
+		}
+	}
+	return true;
+}
+template <typename T>
+bool Vector<T>::operator!=(const Vector& other)const{
+	if(*this!=other){
+		return true;
+	}
+	return false;
+}
+template<typename T>
+bool Vector<T>::operator<(const Vector& other)const{
+	if(sizet<other.sizet){
+		return true;
+	}
+	std::cout<<"no";
+	return false;
+}
+template<typename T>
+bool Vector<T>::operator<=(const Vector& other)const{
+	if(sizet<other.sizet){
+		return true;
+	}
+	if(sizet==other.sizet){
+		return true;
+	}
+	return false;
+}
+template<typename T>
+bool Vector<T>::operator>(const Vector& other)const{
+	if(sizet>other.sizet){
+		return true;
+	}
+	return false;
+}
+template<typename T>
+bool Vector<T>::operator>=(const Vector& other)const{
+	if(sizet>other.sizet){
+		return true;
+	}
+	if(sizet==other.sizet){
+		return true;
+	}
+	return false;
+}
 #endif
 
 			
