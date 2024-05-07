@@ -22,22 +22,32 @@ class Vector{
 	Vector(size_type);//delegated ctor
 	Vector(size_type,const_referance);
 	Vector(const Vector<T>&);
-	 Vector <T>& operator=(const Vector <T>&);
-	 Vector(Vector <T>&&);
-	 const Vector <T>& operator=(Vector <T>&&);
+	Vector <T>& operator=(const Vector <T>&);
+	Vector(Vector <T>&&);
+	const Vector <T>& operator=(Vector <T>&&);
 	~Vector();
-	void push_back(const_referance);
+	void push_back(const_referance); // 
 	void push_front(value_type);
-	void pop_back();
+	void pop_back();//
 	void pop_front();
-	referance at(size_type);
-	void resize(size_type);
+	referance at(size_type); //
+	const_referance at(size_type) const;
+	referance operator[](size_type);referance
+	const_referance operator[](size_type)const;
+	void resize(size_type);//
 	void insert(size_type,value_type);
 	void remove(size_type);
-	size_type size();
+	size_type size();//
+	size_type capacity();//
 	void clear();
-	bool empty();
+	bool empty();//
+	bool operator==(const vector& other) const;
+        bool operator!=(const vector& other) const;
+        bool operator<(const vector& other) const;
+        bool operator<=(const vector& other) const;
+        bool operator>(const vector& other) const;
+        bool operator>=(const vector& other) const;
 };
-#include "vector.cpp"
 #endif
 
+	
